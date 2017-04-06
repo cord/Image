@@ -34,7 +34,9 @@ class GarbageCollect
             return false;
         }
 
-        while ($file = readdir($dir)) {
+        // allow to delete directories with name "0" (zero)
+        while (false !== ($file = readdir($dir))) {
+
             if ($file == '.' || $file == '..') {
                 continue;
             }
